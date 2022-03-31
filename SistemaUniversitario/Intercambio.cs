@@ -4,7 +4,10 @@ using System.Text;
 
 namespace SistemaUniversitario
 {
-    internal class Intercambio
+    class Intercambio : Estudiante
     {
+        public Intercambio(string nombre) : base(nombre)
+        {
+        }
     }
 }

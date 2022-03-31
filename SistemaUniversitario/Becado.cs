@@ -4,7 +4,10 @@ using System.Text;
 
 namespace SistemaUniversitario
 {
-    internal class Becado
+    class Becado : Estudiante
     {
+        public Becado(string nombre) : base(nombre)
+        {
+        }
     }
 }

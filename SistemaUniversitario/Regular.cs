@@ -4,7 +4,10 @@ using System.Text;
 
 namespace SistemaUniversitario
 {
-    internal class Regular
+    class Regular : Estudiante
     {
+        public Regular(string nombre) : base(nombre)
+        {
+        }
     }
 }
