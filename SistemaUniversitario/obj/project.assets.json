@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\david\\Source\\Repos\\samuelperezh\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
+      "projectUniqueName": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
       "projectName": "SistemaUniversitario",
-      "projectPath": "C:\\Users\\david\\Source\\Repos\\samuelperezh\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
+      "projectPath": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
       "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\david\\Source\\Repos\\samuelperezh\\SistemaUniversitario\\SistemaUniversitario\\obj\\",
+      "outputPath": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
