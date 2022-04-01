@@ -6,6 +6,18 @@ namespace SistemaUniversitario
 {
     class MateriaMatriculada
     {
-        private double nota_final_materia;
+        private double calificacion_final;
+        private List<Calificacion> calificaciones = new List<Calificacion>();
+        private Materia materia;
+
+        public MateriaMatriculada()
+        {
+            
+        }
+
+        public void CalcularCalificacionFinal()
+        {
+            
+        }
     }
 }
