@@ -24,5 +24,11 @@ namespace SistemaUniversitario
         public DateTime Fecha_max_cancelacion { get => fecha_max_cancelacion; set => fecha_max_cancelacion = value; }
         internal List<Profesor> Profesores { get => profesores; set => profesores = value; }
         internal List<Estudiante> Estudiantes { get => estudiantes; set => estudiantes = value; }
+
+
+        public void CerrarSemestre()
+        {
+
+        }
     }
 }
