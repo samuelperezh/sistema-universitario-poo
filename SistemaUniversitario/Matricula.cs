@@ -6,12 +6,20 @@ namespace SistemaUniversitario
 {
     class Matricula
     {
-        List<Materia> materias = new List<Materia>();
+        private DateTime fecha_max_inscripcion;
+        private DateTime fecha_max_cancelacion;
+        private double valor_credito;
+        private Estudiante estudiante;
+
+        private List<MateriaMatriculada> materiasMatriculadas = new List<MateriaMatriculada>();
 
         public Matricula()
         {
         }
 
-        internal List<Materia> Materias { get => materias; set => materias = value; }
+        public DateTime Fecha_max_inscripcion { get => fecha_max_inscripcion; set => fecha_max_inscripcion = value; }
+        public DateTime Fecha_max_cancelacion { get => fecha_max_cancelacion; set => fecha_max_cancelacion = value; }
+        public double Valor_credito { get => valor_credito; set => valor_credito = value; }
+        internal List<MateriaMatriculada> Materias { get => materiasMatriculadas; set => materiasMatriculadas = value; }
     }
 }
