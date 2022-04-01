@@ -24,5 +24,25 @@ namespace SistemaUniversitario
         public bool Es_aprobado { get => es_aprobado; set => es_aprobado = value; }
         internal List<Materia> Materias { get => materias; set => materias = value; }
         internal Matricula Matricula { get => matricula; set => matricula = value; }
+
+        public void CalcularCalificacionSemestre()
+        {
+
+        }
+
+        public void VerificarAprobacion(double calificacion_final)
+        {
+
+        }
+
+        public void CancelarMaterias()
+        {
+
+        }
+
+        public void GenerarID()
+        {
+
+        }
     }
 }

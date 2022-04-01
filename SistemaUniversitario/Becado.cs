@@ -9,5 +9,15 @@ namespace SistemaUniversitario
         public Becado(string nombre) : base(nombre)
         {
         }
+
+        public void ComprobarBeca()
+        {
+
+        }
+
+        public void DescontarMatricula()
+        {
+
+        }
     }
 }
