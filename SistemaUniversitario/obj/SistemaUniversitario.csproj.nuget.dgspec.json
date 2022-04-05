@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj": {}
+    "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj": {}
   },
   "projects": {
-    "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj": {
+    "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
+        "projectUniqueName": "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
         "projectName": "SistemaUniversitario",
-        "projectPath": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
-        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\obj\\",
+        "projectPath": "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
+        "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

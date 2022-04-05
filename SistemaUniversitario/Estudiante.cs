@@ -12,8 +12,8 @@ namespace SistemaUniversitario
 
         public Estudiante(string nombre)
         {
-            this.nombre = nombre;
-            GenerarID();
+            this.Nombre = nombre;
+            this.Id = GenerarID();
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
@@ -25,9 +25,15 @@ namespace SistemaUniversitario
 
         }
 
-        public void GenerarID()
+        public string GenerarID()
         {
-            
+            Random rnd = new Random();
+            id = DateTime.Today.ToString("yyyy");
+            for (int i = 0; i < 4; i++)
+            {
+                id = id + rnd.Next(0, 9).ToString();
+            }
+            return id;
         }
     }
 }

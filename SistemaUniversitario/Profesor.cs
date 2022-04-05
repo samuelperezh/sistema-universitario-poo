@@ -12,10 +12,21 @@ namespace SistemaUniversitario
         public Profesor(string nombre, string id)
         {
             this.Nombre = nombre;
-            this.Id = id;
+            this.Id = GenerarID();
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Id { get => id; set => id = value; }
+
+        public string GenerarID()
+        {
+            Random rnd = new Random();
+            id = DateTime.Today.ToString("yyyy");
+            for (int i = 0; i < 4; i++)
+            {
+                id = id + rnd.Next(0, 9).ToString();
+            }
+            return id;
+        }
     }
 }
