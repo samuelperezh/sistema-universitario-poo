@@ -22,5 +22,20 @@ namespace SistemaUniversitario
         public string Nrc { get => nrc; set => nrc = value; }
         public int Numero_creditos { get => numero_creditos; set => numero_creditos = value; }
         internal Profesor Profesor { get => profesor; set => profesor = value; }
+
+        //public void AgregarMaterias()
+        //{
+        //    string ubicacionArchivo = "..\\Materias.csv";
+        //    System.IO.StreamReader archivo = new System.IO.StreamReader(ubicacionArchivo);
+        //    string separador = ";";
+        //    string linea;
+        //    while ((linea = archivo.ReadLine()) != null)
+        //    {
+        //        string[] fila = linea.Split(separador);
+        //        string materia = fila[0];
+        //        int creditos = int.Parse(fila[1]);
+        //        new Materia(materia, nrc, creditos);
+        //    }
+        //}
     }
 }
