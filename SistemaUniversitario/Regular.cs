@@ -8,6 +8,7 @@ namespace SistemaUniversitario
     {
         public Regular(string nombre) : base(nombre)
         {
+            
         }
     }
 }
