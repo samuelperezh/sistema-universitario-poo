@@ -4,7 +4,8 @@ using System.Text;
 
 namespace SistemaUniversitario
 {
-    internal interface IReporte
+    interface IReporte
     {
+        public void Reportar(Semestre semestre);
     }
 }
