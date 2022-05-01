@@ -10,6 +10,7 @@ namespace SistemaUniversitario
 
         public Semestre()
         {
+
         }
 
         public void CerrarSemestre()
