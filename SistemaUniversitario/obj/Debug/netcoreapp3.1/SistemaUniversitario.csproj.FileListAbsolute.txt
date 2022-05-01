@@ -12,3 +12,17 @@ C:\Users\samue\Documents\Ingeniería en Ciencia de Datos\Semestre 2\Programació
 C:\Users\samue\Documents\Ingeniería en Ciencia de Datos\Semestre 2\Programación y Diseño Orientado a Objetos\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.dll
 C:\Users\samue\Documents\Ingeniería en Ciencia de Datos\Semestre 2\Programación y Diseño Orientado a Objetos\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.pdb
 C:\Users\samue\Documents\Ingeniería en Ciencia de Datos\Semestre 2\Programación y Diseño Orientado a Objetos\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.genruntimeconfig.cache
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\bin\Debug\netcoreapp3.1\SistemaUniversitario.exe
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\bin\Debug\netcoreapp3.1\SistemaUniversitario.deps.json
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\bin\Debug\netcoreapp3.1\SistemaUniversitario.runtimeconfig.json
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\bin\Debug\netcoreapp3.1\SistemaUniversitario.runtimeconfig.dev.json
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\bin\Debug\netcoreapp3.1\SistemaUniversitario.dll
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\bin\Debug\netcoreapp3.1\SistemaUniversitario.pdb
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.csproj.AssemblyReference.cache
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.AssemblyInfoInputs.cache
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.AssemblyInfo.cs
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.csproj.CoreCompileInputs.cache
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.dll
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.pdb
+C:\Users\david\Documents\GitHub\SistemaUniversitario\SistemaUniversitario\obj\Debug\netcoreapp3.1\SistemaUniversitario.genruntimeconfig.cache
