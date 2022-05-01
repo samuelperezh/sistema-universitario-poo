@@ -8,6 +8,8 @@ namespace SistemaUniversitario
     {
         public void Reportar(Semestre semestre)
         {
+            //Cambiar el stringbuiler por los datos del semestre para reportarlos
+
             //StringBuilder sb = new StringBuilder();
             //sb.Append(Nombre.Substring(0, 10) + " Vlr Base INICIO: " + Valor_base.ToString("C"));
 
