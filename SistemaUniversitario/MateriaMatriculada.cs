@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace SistemaUniversitario
 {
@@ -8,10 +10,12 @@ namespace SistemaUniversitario
         private List<Calificacion> calificaciones = new List<Calificacion>();
         private Materia materia;
 
-        public MateriaMatriculada()
+        public MateriaMatriculada(Materia materia)
         {
-
+            this.Materia = materia;
         }
+
+        internal Materia Materia { get => materia; set => materia = value; }
 
         public double CalcularCalificacionFinal()
         {

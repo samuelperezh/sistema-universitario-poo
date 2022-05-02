@@ -7,7 +7,7 @@ namespace SistemaUniversitario
         private string nombre;
         private string id;
 
-        public Profesor(string nombre, string id)
+        public Profesor(string nombre)
         {
             this.Nombre = nombre;
             this.Id = GenerarID();
