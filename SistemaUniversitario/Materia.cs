@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace SistemaUniversitario
 {
@@ -23,17 +24,18 @@ namespace SistemaUniversitario
         public int Numero_creditos { get => numero_creditos; set => numero_creditos = value; }
         internal Profesor Profesor { get => profesor; set => profesor = value; }
 
-        //public void AgregarMaterias()
+        //public void CargarMaterias()
         //{
-        //    string ubicacionArchivo = "..\\Materias.csv";
-        //    System.IO.StreamReader archivo = new System.IO.StreamReader(ubicacionArchivo);
-        //    string separador = ";";
+        //    string ubicacionArchivo = @"Materias.txt";
+        //    StreamReader archivo = new StreamReader(ubicacionArchivo);
+        //    string separador = ",";
         //    string linea;
         //    while ((linea = archivo.ReadLine()) != null)
         //    {
         //        string[] fila = linea.Split(separador);
-        //        string materia = fila[0];
-        //        int creditos = int.Parse(fila[1]);
+        //        string nrc = fila[0];
+        //        string materia = fila[1];
+        //        int creditos = int.Parse(fila[2]);
         //        new Materia(materia, nrc, creditos);
         //    }
         //}

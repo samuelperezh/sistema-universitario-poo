@@ -24,7 +24,7 @@ namespace SistemaUniversitario
             id = DateTime.Today.ToString("yyyy");
             for (int i = 0; i < 4; i++)
             {
-                id = id + rnd.Next(0, 9).ToString();
+                id = "P" + id + rnd.Next(0, 9).ToString();
             }
             return id;
         }
