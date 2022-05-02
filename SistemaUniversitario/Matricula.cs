@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SistemaUniversitario
 {
@@ -25,7 +24,7 @@ namespace SistemaUniversitario
 
         public void CalcularCostoTotal()
         {
-           
+
         }
 
         public void CancelarMateria(MateriaMatriculada materias)

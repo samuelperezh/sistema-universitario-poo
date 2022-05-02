@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SistemaUniversitario
+﻿namespace SistemaUniversitario
 {
     class ReporteTexto : IReporte
     {
         public void Reportar(Semestre semestre)
         {
-            //Cambiar el stringbuiler por los datos del semestre para reportarlos
+            //Cambiar el stringbuilder por los datos del semestre para reportarlos
 
             //StringBuilder sb = new StringBuilder();
             //sb.Append(Nombre.Substring(0, 10) + " Vlr Base INICIO: " + Valor_base.ToString("C"));

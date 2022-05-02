@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-
-namespace SistemaUniversitario
+﻿namespace SistemaUniversitario
 {
     class Materia
     {
@@ -11,6 +6,8 @@ namespace SistemaUniversitario
         private string nrc;
         private int numero_creditos;
         private Profesor profesor;
+
+        ICargaMaterias cargar_materias = new CargarMateriasTexto();
 
         public Materia(string nombre, string nrc, int numero_creditos)
         {

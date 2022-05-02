@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SistemaUniversitario
 {
@@ -11,7 +10,6 @@ namespace SistemaUniversitario
 
         public Semestre()
         {
-
         }
 
         public DateTime Fecha_inicio_clases { get => fecha_inicio_clases; set => fecha_inicio_clases = value; }

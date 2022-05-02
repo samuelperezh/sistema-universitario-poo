@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SistemaUniversitario
 {
@@ -12,15 +10,15 @@ namespace SistemaUniversitario
 
         public MateriaMatriculada()
         {
-            
+
         }
 
         public double CalcularCalificacionFinal()
         {
             calificacion_final = 0;
-            foreach(var item in calificaciones)
+            foreach (var item in calificaciones)
             {
-                calificacion_final += (item.Nota * (item.Porcentaje/100));
+                calificacion_final += (item.Nota * (item.Porcentaje / 100));
             }
             if (calificacion_final > 5)
             {

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SistemaUniversitario
+﻿namespace SistemaUniversitario
 {
     class Becado : Estudiante
     {
         private bool conserva_beca;
-        
+
         public Becado(string nombre) : base(nombre)
         {
         }
