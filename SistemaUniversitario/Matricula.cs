@@ -8,6 +8,7 @@ namespace SistemaUniversitario
         private DateTime fecha_max_inscripcion;
         private DateTime fecha_max_cancelacion;
         private double valor_credito;
+        private double costo_matricula;
         private Estudiante estudiante;
         private List<MateriaMatriculada> materias_matriculadas = new List<MateriaMatriculada>();
 
@@ -20,10 +21,11 @@ namespace SistemaUniversitario
         public double Valor_credito { get => valor_credito; set => valor_credito = value; }
         internal Estudiante Estudiante { get => estudiante; set => estudiante = value; }
         internal List<MateriaMatriculada> Materias { get => materias_matriculadas; set => materias_matriculadas = value; }
-
+        public double Costo_matricula { get => costo_matricula; set => costo_matricula = value; }
 
         public void CalcularCostoTotal()
         {
+            costo_matricula = 
 
         }
 
