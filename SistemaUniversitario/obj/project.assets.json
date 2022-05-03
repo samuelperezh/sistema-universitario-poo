@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\david\\.nuget\\packages\\": {}
+    "C:\\Users\\samue\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
+      "projectUniqueName": "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
       "projectName": "SistemaUniversitario",
-      "projectPath": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
-      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\david\\Documents\\GitHub\\SistemaUniversitario\\SistemaUniversitario\\obj\\",
+      "projectPath": "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\SistemaUniversitario.csproj",
+      "packagesPath": "C:\\Users\\samue\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samue\\Documents\\Ingeniería en Ciencia de Datos\\Semestre 2\\Programación y Diseño Orientado a Objetos\\SistemaUniversitario\\SistemaUniversitario\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\samue\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
