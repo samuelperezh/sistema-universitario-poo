@@ -24,6 +24,18 @@ namespace SistemaUniversitario
         public double Valor_credito { get => valor_credito; protected set => valor_credito = value; }
         public string Aprobacion { get => aprobacion; set => aprobacion = value; }
 
+        protected virtual void VerificarAprobacion(Matricula matr)
+        {
+            if (matr.Calificacion_final >= 3 && matr.Calificacion_final <= 5)
+            {
+                Aprobacion = "Aprobado";
+            }
+            else
+            {
+                Aprobacion = "Reprobado";
+            }
+        }
+        
         public string GenerarID()
         {
             Random rnd = new Random();

@@ -1,9 +1,16 @@
-﻿namespace SistemaUniversitario
+﻿using System.Text;
+using System.IO;
+using System.Collections.Generic;
+
+namespace SistemaUniversitario
 {
     class ReporteTexto : IReporte
     {
         public void Reportar(Semestre semestre)
         {
+            StringBuilder sb = new StringBuilder();
+            //sb.Append()
+            
             //Cambiar el stringbuilder por los datos del semestre para reportarlos
 
             //StringBuilder sb = new StringBuilder();
