@@ -18,9 +18,9 @@ namespace SistemaUniversitario
             this.Profesor = profesor;
         }
 
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Nrc { get => nrc; set => nrc = value; }
-        public int Numero_creditos { get => numero_creditos; set => numero_creditos = value; }
-        internal Profesor Profesor { get => profesor; set => profesor = value; }
+        public string Nombre { get => nombre; protected set => nombre = value; }
+        public string Nrc { get => nrc; protected set => nrc = value; }
+        public int Numero_creditos { get => numero_creditos; protected set => numero_creditos = value; }
+        internal Profesor Profesor { get => profesor; private set => profesor = value; }
     }
 }

@@ -13,8 +13,8 @@ namespace SistemaUniversitario
             this.Id = id;
         }
 
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Id { get => id; set => id = value; }
+        public string Nombre { get => nombre; protected set => nombre = value; }
+        public string Id { get => id; protected set => id = value; }
 
         //public string GenerarID()
         //{
@@ -26,5 +26,10 @@ namespace SistemaUniversitario
         //    }
         //    return id;
         //}
+
+        public void AgregarCalificaciones(MateriaMatriculada est, double nota, double porcentaje, string descripcion)
+        {
+            est.Calificaciones.Add(new Calificacion(nota, porcentaje, descripcion));
+        }
     }
 }

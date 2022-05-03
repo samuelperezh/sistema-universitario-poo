@@ -4,10 +4,6 @@
     {
         private bool conserva_beca;
 
-        public Becado(string nombre) : base(nombre)
-        {
-        }
-
         public void ComprobarBeca()
         {
 

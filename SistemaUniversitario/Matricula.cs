@@ -5,38 +5,80 @@ namespace SistemaUniversitario
 {
     class Matricula
     {
-        private DateTime fecha_max_inscripcion;
-        private DateTime fecha_max_cancelacion;
-        private double valor_credito;
         private double costo_matricula;
-        private Estudiante estudiante;
+        private double calificacion_final;
+        private string aprobacion;
         private List<MateriaMatriculada> materias_matriculadas = new List<MateriaMatriculada>();
+        private Estudiante estudiante;
 
         public Matricula()
         {
+
         }
 
-        public DateTime Fecha_max_inscripcion { get => fecha_max_inscripcion; set => fecha_max_inscripcion = value; }
-        public DateTime Fecha_max_cancelacion { get => fecha_max_cancelacion; set => fecha_max_cancelacion = value; }
-        public double Valor_credito { get => valor_credito; set => valor_credito = value; }
+        public double Costo_matricula { get => costo_matricula; private set => costo_matricula = value; }
+        public double Calificacion_final { get => calificacion_final; private set => calificacion_final = value; }
+        internal List<MateriaMatriculada> Materias_matriculadas { get => materias_matriculadas; set => materias_matriculadas = value; }
         internal Estudiante Estudiante { get => estudiante; set => estudiante = value; }
-        internal List<MateriaMatriculada> Materias { get => materias_matriculadas; set => materias_matriculadas = value; }
-        public double Costo_matricula { get => costo_matricula; set => costo_matricula = value; }
+        public string Aprobacion { get => aprobacion; set => aprobacion = value; }
 
-        public void CalcularCostoTotal()
+        public void VerificarAprobacion(Estudiante est)
         {
-            costo_matricula = 
-
+            if (est.GetType() == typeof(Regular) || est.GetType() == typeof(Becado))
+            {
+                if (Calificacion_final >= 3 || Calificacion_final <= 5)
+                {
+                    est.Aprobacion = "Aprobado";
+                }
+                else
+                {
+                    est.Aprobacion = "Reprobado";
+                }
+            }
+            else if (est.GetType() == typeof(Intercambio))
+            {
+                if (Calificacion_final >= 3.5 || Calificacion_final <= 5)
+                {
+                    est.Aprobacion = "Aprobado";
+                }
+                else
+                {
+                    est.Aprobacion = "Reprobado";
+                }
+            }
         }
 
-        public void CancelarMateria(MateriaMatriculada materias)
+        public double CalcularCostoMatricula(Estudiante est)
         {
-
+            int total_creditos = 0;
+            foreach (var item in materias_matriculadas)
+            {
+                total_creditos += item.Materia.Numero_creditos;
+            }
+            Costo_matricula = total_creditos * est.Valor_credito;
+            return Costo_matricula;
         }
 
-        public void CalcularCalificacionSemestre()
+        public void CancelarMateria(MateriaMatriculada materia)
         {
+            materias_matriculadas.Remove(materia);
+            materia.Estado = "Cancelada";
+        }
 
+        public double CalcularCalificacionFinal()
+        {
+            int total_creditos = 0;
+            foreach (var item in materias_matriculadas)
+            {
+                total_creditos += item.Materia.Numero_creditos;
+            }
+            double ponderacion = 0;
+            foreach (var item in materias_matriculadas)
+            {
+                ponderacion += item.Materia.Numero_creditos * item.Calificacion_final;
+            }
+            Calificacion_final = ponderacion / total_creditos;
+            return Calificacion_final;
         }
 
     }

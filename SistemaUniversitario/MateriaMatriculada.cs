@@ -7,28 +7,33 @@ namespace SistemaUniversitario
     class MateriaMatriculada
     {
         private double calificacion_final;
+        private string estado;
         private List<Calificacion> calificaciones = new List<Calificacion>();
         private Materia materia;
 
         public MateriaMatriculada(Materia materia)
         {
             this.Materia = materia;
+            this.Estado = "Matriculada";
         }
 
+        public double Calificacion_final { get => calificacion_final; protected set => calificacion_final = value; }
+        public string Estado { get => estado; set => estado = value; }
         internal Materia Materia { get => materia; set => materia = value; }
+        internal List<Calificacion> Calificaciones { get => calificaciones; private set => calificaciones = value; }
 
         public double CalcularCalificacionFinal()
         {
-            calificacion_final = 0;
-            foreach (var item in calificaciones)
+            Calificacion_final = 0;
+            foreach (var item in Calificaciones)
             {
-                calificacion_final += (item.Nota * (item.Porcentaje / 100));
+                Calificacion_final += (item.Nota * (item.Porcentaje / 100));
             }
-            if (calificacion_final > 5)
+            if (Calificacion_final > 5)
             {
-                calificacion_final = 0;
+                Calificacion_final = 0;
             }
-            return calificacion_final;
+            return Calificacion_final;
         }
     }
 }

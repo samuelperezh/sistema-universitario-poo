@@ -14,8 +14,8 @@
             this.Descripcion = descripcion;
         }
 
-        public double Nota { get => nota; set => nota = value; }
-        public double Porcentaje { get => porcentaje; set => porcentaje = value; }
-        public string Descripcion { get => descripcion; set => descripcion = value; }
+        public double Nota { get => nota; protected set => nota = value; }
+        public double Porcentaje { get => porcentaje; protected set => porcentaje = value; }
+        public string Descripcion { get => descripcion; protected set => descripcion = value; }
     }
 }
