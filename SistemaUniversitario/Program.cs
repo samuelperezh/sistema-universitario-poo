@@ -54,6 +54,7 @@ namespace SistemaUniversitario
                         switch (op)
                         {
                             case 0:
+                                Console.WriteLine("=========== HASTA PRONTO ===============");
                                 break;
                             case 1: //Rol estudiante
                                 do
@@ -71,6 +72,10 @@ namespace SistemaUniversitario
                                         {
                                             case 0:
                                                 break;
+
+                                            case 1:
+
+
                                         }
                                     }
                                     catch (Exception ee)

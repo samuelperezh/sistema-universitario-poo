@@ -18,7 +18,8 @@ namespace SistemaUniversitario
                 sb.Append("Fecha-hora: " + DateTime.Now +
                     $"\n Cantidad de materias matriculadas: {reportes[0]}" +
                     $"\n Cantidad de créditos totales: {reportes[1]}" +
-                    $"\n Calificacion final (promedio crédito ponderado): {reportes[2]}" +
+                    $"\n Calificacion final (promedio crédito ponderado): {reportes[2]}"); 
+                    //+
                     //$"\n tipo de pago más usado: {reportes[3]}" +
                     //$"\n tipo de combustible más usado: {reportes[4]}");
 
@@ -30,7 +31,7 @@ namespace SistemaUniversitario
             }
             
                 
-                throw new System.NotImplementedException();
+                //throw new System.NotImplementedException();
         }
 
         //public void reportar(list<string> reportes)
