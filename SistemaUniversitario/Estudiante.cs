@@ -25,25 +25,32 @@ namespace SistemaUniversitario
         public double Valor_credito { get => valor_credito; protected set => valor_credito = value; }
         internal Matricula Matricula { get => matricula; set => matricula = value; }
 
-        public virtual void VerificarAprobacion(Matricula matr)
+        public void Matricular()
         {
-            if (matr.Calificacion_final >= 3 && matr.Calificacion_final <= 5)
+            Matricula = new Matricula(this);
+        }
+
+        public virtual string VerificarAprobacion()
+        {
+            string aprobacion;
+            if (Matricula.Calificacion_final >= 3 && Matricula.Calificacion_final <= 5)
             {
-                this.Aprobacion = "Aprobado";
+                aprobacion = "Aprobado";
             }
             else
             {
-                this.Aprobacion = "Reprobado";
+                aprobacion = "Reprobado";
             }
+            return aprobacion;
         }
         
         public string GenerarID()
         {
             Random rnd = new Random();
-            Id = DateTime.Today.ToString("yyyy");
-            for (int i = 0; i < 4; i++)
+            Id = "E" + DateTime.Today.ToString("yyyy");
+            for (int i = 0; i < 6; i++)
             {
-                Id = "E" + Id + rnd.Next(0, 9).ToString();
+                Id = Id + rnd.Next(0, 9).ToString();
             }
             return Id;
         }

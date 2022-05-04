@@ -8,8 +8,17 @@ namespace SistemaUniversitario
     {
         static void Main(string[] args)
         {
+            string nombre;
+            string tipo;
+            string nrc;
+            string id;
+            Semestre semestre = new Semestre();
             List<Materia> lista_materias = new List<Materia>();
-            List<Profesor> lista_profesores = new List<Profesor>();
+
+            //List<Matricula> lista_matriculas = new List<Matricula>();
+            //List<MateriaMatriculada> lista_materia_matriculada = new List<MateriaMatriculada>();
+            //List<Profesor> lista_profesores = new List<Profesor>();
+            //List<Estudiante> lista_estudiantes = new List<Estudiante>();
 
             StreamReader archivo = new StreamReader("..\\..\\..\\BD.txt");
             string separador = ",";
@@ -17,22 +26,20 @@ namespace SistemaUniversitario
             while ((linea = archivo.ReadLine()) != null)
             {
                 string[] fila = linea.Split(separador);
-                string nrc = fila[0];
+                nrc = fila[0];
                 string materia = fila[1];
                 int creditos = int.Parse(fila[2]);
                 Profesor profesor = new Profesor(fila[3],fila[4]);
                 lista_materias.Add(new Materia(materia, nrc, creditos, profesor));
-                lista_profesores.Add(profesor);
             }
 
-
-            foreach(var item in lista_materias)
-            {
-                MostrarMaterias(item);
-            }
+            //foreach(var item in lista_materias)
+            //{
+            //    MostrarMaterias(item);
+            //}
             
-            MateriaMatriculada poo = new MateriaMatriculada(lista_materias.Find(c1 => c1.Nrc == "99370011"));
-            MostrarMateriaMatriculada(poo);
+            //MateriaMatriculada poo = new MateriaMatriculada(lista_materias.Find(c1 => c1.Nrc == "99370011"));
+            //MostrarMateriaMatriculada(poo);
 
             try
             {
@@ -53,10 +60,10 @@ namespace SistemaUniversitario
                         } while (!esNro);
                         switch (op)
                         {
-                            case 0:
-                                Console.WriteLine("=========== HASTA PRONTO ===============");
+                            case 0://Cerrar el programa
+                                Console.WriteLine("=========== HASTA PRONTO ===========");
                                 break;
-                            case 1: //Rol estudiante
+                            case 1://Rol estudiante
                                 do
                                 {
                                     try
@@ -70,12 +77,31 @@ namespace SistemaUniversitario
                                         } while (!esNro);
                                         switch (op_e)
                                         {
-                                            case 0:
+                                            case 0://Salir
                                                 break;
 
-                                            case 1:
+                                            case 1://Inscribir materias
+                                                Console.WriteLine("\nIngresa tu ID: ");
+                                                id = Console.ReadLine();
+                                                Estudiante est = semestre.Estudiantes.Find(e => e.Id == id);
+                                                Console.WriteLine("\nIngresa el NRC de la materia que deseas matricular: ");
+                                                nrc = Console.ReadLine();
+                                                Materia mat = lista_materias.Find(m => m.Nrc == nrc);
+                                                est.Matricula.MatricularMaterias(mat);
                                                 break;
 
+                                            case 2://Cancelar materias
+                                                break;
+
+                                            case 3://Ver calificaciones
+                                                break;
+
+                                            case 4://Ver materias matriculadas y profesores
+                                                Console.WriteLine("\nIngresa tu ID: ");
+                                                id = Console.ReadLine();
+                                                Estudiante est1 = semestre.Estudiantes.Find(e => e.Id == id);
+                                                MostrarMateriasMatriculadas(est1);
+                                                break;
                                         }
                                     }
                                     catch (Exception ee)
@@ -84,7 +110,7 @@ namespace SistemaUniversitario
                                     }
                                 } while (op_e != 0);
                                 break;
-                            case 2: //Rol profesor
+                            case 2://Rol profesor
                                 do
                                 {
                                     try
@@ -98,7 +124,18 @@ namespace SistemaUniversitario
                                         } while (!esNro);
                                         switch (op_p)
                                         {
-                                            case 0:
+                                            case 0://Salir
+                                                break;
+
+                                            case 1://Añadir calificaciones
+                                                //do
+                                                //{
+                                                //    Console.WriteLine("\nIngresa tu ID: ");
+                                                //    esNro = int.TryParse(Console.ReadLine(), out id);
+                                                //} while (!esNro) ;
+                                                break;
+
+                                            case 2://Ver materias dictadas
                                                 break;
                                         }
                                     }
@@ -108,7 +145,7 @@ namespace SistemaUniversitario
                                     }
                                 } while (op_e != 0);
                                 break;
-                            case 3: //Rol administrativo
+                            case 3://Rol administrativo
                                 do
                                 {
                                     try
@@ -122,7 +159,40 @@ namespace SistemaUniversitario
                                         } while (!esNro);
                                         switch (op_a)
                                         {
-                                            case 0:
+                                            case 0://Salir
+                                                break;
+
+                                            case 1://Crear estudiantes
+                                                Console.WriteLine("\nIngresa el nombre del estudiante: ");
+                                                nombre = Console.ReadLine();
+                                                Console.WriteLine("\n¿Es un estudiante regular, becado o de intercambio? (R/B/I): ");
+                                                tipo = Console.ReadLine();
+                                                semestre.AñadirEstudiantes(nombre, tipo);
+                                                break;
+
+                                            case 2://Eliminar estudiantes
+                                                Console.WriteLine("\nIngresa el ID del estudiante que deseas eliminar: ");
+                                                id = Console.ReadLine();
+                                                semestre.EliminarEstudiantes(id);
+                                                break;
+
+                                            case 3://Mostrar todos los estudiantes
+                                                foreach (Estudiante est in semestre.Estudiantes)
+                                                {
+                                                    if (est is Regular)
+                                                    {
+                                                        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Regular");
+                                                    }
+                                                    else if (est is Becado)
+                                                    {
+                                                        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Becado");
+                                                    }
+                                                    else if (est is Intercambio)
+                                                    {
+                                                        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Intercambio");
+                                                    }
+                                                }
+                                                Console.WriteLine();
                                                 break;
                                         }
                                     }
@@ -146,18 +216,29 @@ namespace SistemaUniversitario
             }
         }
 
-        public static void PruebaID(Estudiante est)
-        {
-            Console.WriteLine($"Nombre: {est.Nombre} ID: {est.Id}");
-        }
+        //public static void MostrarInfoEstudiante(Estudiante est)
+        //{
+        //    if (est is Regular)
+        //    {
+        //        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Regular\n");
+        //    }
+        //    else if (est is Becado)
+        //    {
+        //        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Becado\n");
+        //    }
+        //    else if (est is Intercambio)
+        //    {
+        //        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Intercambio\n");
+        //    }
+        //}
 
-        public static void MostrarMaterias(Materia mate)
+        public static void MostrarMateriasMatriculadas(Estudiante est)
         {
-            Console.WriteLine($"Nombre de la materia: {mate.Nombre}, Creditos: {mate.Numero_creditos}, NRC: {mate.Nrc}");
-        }
-        public static void MostrarMateriaMatriculada(MateriaMatriculada mate)
-        {
-            Console.WriteLine($"\nNombre de la materia matriculada: {mate.Materia.Nombre}, Creditos: {mate.Materia.Numero_creditos}, NRC: {mate.Materia.Nrc}");
+            foreach (var item in est.Matricula.Materias_matriculadas)
+            {
+                Console.WriteLine($"Materia matriculada: {item.Nombre}, Creditos: {item.Numero_creditos}, NRC: {item.Nrc}, Profesor: {item.Profesor.Nombre}");
+            }
+            Console.WriteLine("");
         }
 
         public static void MostrarMenu()
@@ -167,7 +248,7 @@ namespace SistemaUniversitario
                 "1. Estudiante\n" +
                 "2. Profesor\n" +
                 "3. Administrativo\n" +
-                "0. Salir del Sistema\n");
+                "0. Salir del Sistema");
         }
 
         public static void MostrarMenuEstudiante()
@@ -177,7 +258,7 @@ namespace SistemaUniversitario
                 "2. Cancelar materias\n" +
                 "3. Ver calificaciones\n" +
                 "4. Ver materias matriculadas y profesores\n" +
-                "0. Regresar al menú anterior\n");
+                "0. Regresar al menú anterior");
         }
 
         public static void MostrarMenuProfesor()
@@ -185,7 +266,7 @@ namespace SistemaUniversitario
             Console.WriteLine("===== Profesor =====\n" +
                 "1. Añadir calificaciones\n" +
                 "2. Ver materias dictadas\n" +
-                "0. Regresar al menú anterior\n");
+                "0. Regresar al menú anterior");
         }
 
         public static void MostrarMenuAdministrativo()
@@ -193,7 +274,8 @@ namespace SistemaUniversitario
             Console.WriteLine("===== Administrativo =====\n" +
                 "1. Crear estudiantes\n" +
                 "2. Eliminar estudiantes\n" +
-                "0. Regresar al menú anterior\n");
+                "3. Mostrar todos los estudiantes\n" +
+                "0. Regresar al menú anterior");
         }
     }
 }

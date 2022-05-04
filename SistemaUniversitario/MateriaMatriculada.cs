@@ -6,34 +6,46 @@ namespace SistemaUniversitario
 {
     class MateriaMatriculada
     {
+        private string nombre;
+        private string nrc;
+        private int numero_creditos;
         private double calificacion_final;
         private string estado;
         private List<Calificacion> calificaciones = new List<Calificacion>();
         private Materia materia;
+        private Profesor profesor;
 
         public MateriaMatriculada(Materia materia)
         {
-            this.Materia = materia;
+            this.Nombre = materia.Nombre;
+            this.Nrc = materia.Nrc;
+            this.Numero_creditos = materia.Numero_creditos;
+            this.Calificacion_final = CalcularCalificacionFinal();
             this.Estado = "Matriculada";
+            this.Profesor = materia.Profesor;
         }
 
-        public double Calificacion_final { get => calificacion_final; protected set => calificacion_final = value; }
+        public double Calificacion_final { get => calificacion_final; private set => calificacion_final = value; }
         public string Estado { get => estado; set => estado = value; }
-        internal Materia Materia { get => materia; set => materia = value; }
-        internal List<Calificacion> Calificaciones { get => calificaciones; set => calificaciones = value; }
+        public string Nombre { get => nombre; private set => nombre = value; }
+        public string Nrc { get => nrc; private set => nrc = value; }
+        public int Numero_creditos { get => numero_creditos; private set => numero_creditos = value; }
+        internal Materia Materia { get => materia; private set => materia = value; }
+        internal List<Calificacion> Calificaciones { get => calificaciones; private set => calificaciones = value; }
+        internal Profesor Profesor { get => profesor; private set => profesor = value; }
 
         public double CalcularCalificacionFinal()
         {
-            Calificacion_final = 0;
+            double final = 0;
             foreach (var item in Calificaciones)
             {
-                Calificacion_final += (item.Nota * (item.Porcentaje / 100));
+                final += (item.Nota * (item.Porcentaje / 100));
             }
-            if (Calificacion_final > 5)
+            if (final > 5)
             {
-                Calificacion_final = 0;
+                final = 0;
             }
-            return Calificacion_final;
+            return final;
         }
     }
 }

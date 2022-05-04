@@ -7,17 +7,18 @@
             this.Valor_credito = 800000;
         }
 
-        public override void VerificarAprobacion(Matricula matr)
+        public override string VerificarAprobacion()
         {
-            matr.CalcularCalificacionFinal();
-            if (matr.Calificacion_final >= 3.5 && matr.Calificacion_final <= 5)
+            string aprobacion;
+            if (Matricula.Calificacion_final >= 3.5 && Matricula.Calificacion_final <= 5)
             {
-                this.Aprobacion = "Aprobado";
+                aprobacion = "Aprobado";
             }
             else
             {
-                this.Aprobacion = "Reprobado";
+                aprobacion = "Reprobado";
             }
+            return aprobacion;
         }
     }
 }
