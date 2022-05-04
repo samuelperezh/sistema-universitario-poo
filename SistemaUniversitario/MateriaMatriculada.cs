@@ -20,7 +20,7 @@ namespace SistemaUniversitario
         public double Calificacion_final { get => calificacion_final; protected set => calificacion_final = value; }
         public string Estado { get => estado; set => estado = value; }
         internal Materia Materia { get => materia; set => materia = value; }
-        internal List<Calificacion> Calificaciones { get => calificaciones; private set => calificaciones = value; }
+        internal List<Calificacion> Calificaciones { get => calificaciones; set => calificaciones = value; }
 
         public double CalcularCalificacionFinal()
         {

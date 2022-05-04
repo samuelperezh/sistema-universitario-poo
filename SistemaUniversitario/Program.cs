@@ -74,7 +74,7 @@ namespace SistemaUniversitario
                                                 break;
 
                                             case 1:
-
+                                                break;
 
                                         }
                                     }

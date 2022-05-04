@@ -4,8 +4,6 @@ namespace SistemaUniversitario
 {
     interface IReporte
     {
-        //public void Reportar(Semestre semestre);
-
-        public void Reportar(List<string> reportes);
+        public void Reportar(Estudiante est);
     }
 }

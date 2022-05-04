@@ -5,17 +5,12 @@ namespace SistemaUniversitario
 {
     class Semestre
     {
-        private List<Matricula> matriculas = new List<Matricula>();
+        private List<Estudiante> estudiantes = new List<Estudiante>();
 
-        public Semestre()
-        {
-        }
+        IReporte reporte = new ReporteTexto();
 
-        internal List<Matricula> Matriculas { get => matriculas; private set => matriculas = value; }
+        public Semestre() { }
 
-    public void CerrarSemestre()
-        {
-
-        }
+        internal List<Estudiante> Estudiantes { get => estudiantes; private set => estudiantes = value; }
     }
 }

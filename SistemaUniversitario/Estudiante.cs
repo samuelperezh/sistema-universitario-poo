@@ -11,28 +11,29 @@ namespace SistemaUniversitario
         private string id;
         private double valor_credito;
         private string aprobacion;
+        private Matricula matricula;
 
         public Estudiante(string nombre)
         {
             this.Nombre = nombre;
             this.Id = GenerarID();
-            this.Aprobacion = "N/A";
         }
 
         public string Nombre { get => nombre; protected set => nombre = value; }
         public string Id { get => id; protected set => id = value; }
-        public double Valor_credito { get => valor_credito; protected set => valor_credito = value; }
         public string Aprobacion { get => aprobacion; set => aprobacion = value; }
+        public double Valor_credito { get => valor_credito; protected set => valor_credito = value; }
+        internal Matricula Matricula { get => matricula; set => matricula = value; }
 
-        protected virtual void VerificarAprobacion(Matricula matr)
+        public virtual void VerificarAprobacion(Matricula matr)
         {
             if (matr.Calificacion_final >= 3 && matr.Calificacion_final <= 5)
             {
-                Aprobacion = "Aprobado";
+                this.Aprobacion = "Aprobado";
             }
             else
             {
-                Aprobacion = "Reprobado";
+                this.Aprobacion = "Reprobado";
             }
         }
         

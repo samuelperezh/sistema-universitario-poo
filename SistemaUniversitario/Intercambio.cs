@@ -4,18 +4,19 @@
     {
         public Intercambio(string nombre) : base(nombre)
         {
+            this.Valor_credito = 800000;
         }
 
-        protected override void VerificarAprobacion(Matricula matr)
+        public override void VerificarAprobacion(Matricula matr)
         {
             matr.CalcularCalificacionFinal();
             if (matr.Calificacion_final >= 3.5 && matr.Calificacion_final <= 5)
             {
-                Aprobacion = "Aprobado";
+                this.Aprobacion = "Aprobado";
             }
             else
             {
-                Aprobacion = "Reprobado";
+                this.Aprobacion = "Reprobado";
             }
         }
     }

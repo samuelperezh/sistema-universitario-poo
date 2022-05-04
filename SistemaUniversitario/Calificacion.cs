@@ -9,9 +9,15 @@
         public Calificacion(double nota, double porcentaje, string descripcion)
         {
             this.Nota = nota;
-            //En el constructor no se puede ingresar una nota mayor a 5 ni menor que 0 (en el program).
             this.Porcentaje = porcentaje;
             this.Descripcion = descripcion;
+        }
+
+        public Calificacion(double nota, double porcentaje)
+        {
+            this.Nota = nota;
+            this.Porcentaje = porcentaje;
+            this.Descripcion = "";
         }
 
         public double Nota { get => nota; protected set => nota = value; }
