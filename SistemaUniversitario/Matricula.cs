@@ -7,7 +7,7 @@ namespace SistemaUniversitario
     {
         private double costo_matricula;
         private double calificacion_final;
-        private double total_creditos;
+        private int total_creditos;
         private List<MateriaMatriculada> materias_matriculadas = new List<MateriaMatriculada>();
 
         public Matricula(Estudiante est)
@@ -19,12 +19,36 @@ namespace SistemaUniversitario
 
         public double Costo_matricula { get => costo_matricula; private set => costo_matricula = value; }
         public double Calificacion_final { get => calificacion_final; private set => calificacion_final = value; }
-        public double Total_creditos { get => total_creditos; private set => total_creditos = value; }
+        public int Total_creditos { get => total_creditos; private set => total_creditos = value; }
         internal List<MateriaMatriculada> Materias_matriculadas { get => materias_matriculadas; set => materias_matriculadas = value; }
 
-        public void MatricularMaterias(Materia materia)
+        public void MatricularMaterias(Materia materia, Estudiante est)
         {
-            materias_matriculadas.Add(new MateriaMatriculada(materia));
+            CalcularCreditos();
+            if (est is Regular || est is Becado)
+            {
+                int creditos = Total_creditos + materia.Numero_creditos;
+                if (creditos <= 17)
+                {
+                    materias_matriculadas.Add(new MateriaMatriculada(materia));
+                }
+                else
+                {
+                    Console.WriteLine("¡Error! Los estudiantes becados y regulares pueden inscribir un máximo de 17 créditos");
+                }
+            }
+            else if (est is Intercambio)
+            {
+                int creditos = Total_creditos + materia.Numero_creditos;
+                if (creditos <= 12)
+                {
+                    materias_matriculadas.Add(new MateriaMatriculada(materia));
+                }
+                else
+                {
+                    Console.WriteLine("¡Error! Los estudiantes de intercambio pueden inscribir un máximo de 12 créditos");
+                }
+            }
         }
 
         public void CancelarMaterias(MateriaMatriculada materia)

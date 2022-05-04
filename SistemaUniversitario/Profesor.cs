@@ -27,9 +27,9 @@ namespace SistemaUniversitario
         //    return id;
         //}
 
-        public void AgregarCalificaciones(MateriaMatriculada mat, double nota, double porcentaje, string descripcion)
-        {
-            mat.Calificaciones.Add(new Calificacion(nota, porcentaje, descripcion));
-        }
+        //public void AgregarCalificaciones(MateriaMatriculada mat, double nota, double porcentaje, string descripcion)
+        //{
+        //    mat.Calificaciones.Add(new Calificacion(nota, porcentaje, descripcion));
+        //}
     }
 }

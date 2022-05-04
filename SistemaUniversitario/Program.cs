@@ -11,14 +11,14 @@ namespace SistemaUniversitario
             string nombre;
             string tipo;
             string nrc;
-            string id;
+            string id_e;
+            string id_p;
+            double nota;
+            int porcentaje;
+            string descripcion;
             Semestre semestre = new Semestre();
             List<Materia> lista_materias = new List<Materia>();
-
-            //List<Matricula> lista_matriculas = new List<Matricula>();
-            //List<MateriaMatriculada> lista_materia_matriculada = new List<MateriaMatriculada>();
-            //List<Profesor> lista_profesores = new List<Profesor>();
-            //List<Estudiante> lista_estudiantes = new List<Estudiante>();
+            List<Profesor> lista_profesores = new List<Profesor>();
 
             StreamReader archivo = new StreamReader("..\\..\\..\\BD.txt");
             string separador = ",";
@@ -32,14 +32,6 @@ namespace SistemaUniversitario
                 Profesor profesor = new Profesor(fila[3],fila[4]);
                 lista_materias.Add(new Materia(materia, nrc, creditos, profesor));
             }
-
-            //foreach(var item in lista_materias)
-            //{
-            //    MostrarMaterias(item);
-            //}
-            
-            //MateriaMatriculada poo = new MateriaMatriculada(lista_materias.Find(c1 => c1.Nrc == "99370011"));
-            //MostrarMateriaMatriculada(poo);
 
             try
             {
@@ -82,25 +74,36 @@ namespace SistemaUniversitario
 
                                             case 1://Inscribir materias
                                                 Console.WriteLine("\nIngresa tu ID: ");
-                                                id = Console.ReadLine();
-                                                Estudiante est = semestre.Estudiantes.Find(e => e.Id == id);
+                                                id_e = Console.ReadLine();
+                                                Estudiante est1 = semestre.Estudiantes.Find(e => e.Id == id_e);
                                                 Console.WriteLine("\nIngresa el NRC de la materia que deseas matricular: ");
                                                 nrc = Console.ReadLine();
-                                                Materia mat = lista_materias.Find(m => m.Nrc == nrc);
-                                                est.Matricula.MatricularMaterias(mat);
+                                                Materia mat1 = lista_materias.Find(m => m.Nrc == nrc);
+                                                est1.Matricula.MatricularMaterias(mat1, est1);
                                                 break;
 
                                             case 2://Cancelar materias
+                                                Console.WriteLine("\nIngresa tu ID: ");
+                                                id_e = Console.ReadLine();
+                                                Estudiante est2 = semestre.Estudiantes.Find(e => e.Id == id_e);
+                                                Console.WriteLine("\nIngresa el NRC de la materia que deseas cancelar: ");
+                                                nrc = Console.ReadLine();
+                                                MateriaMatriculada mat2 = est2.Matricula.Materias_matriculadas.Find(m => m.Nrc == nrc);
+                                                est2.Matricula.CancelarMaterias(mat2);
                                                 break;
 
                                             case 3://Ver calificaciones
+                                                Console.WriteLine("\nIngresa tu ID: ");
+                                                id_e = Console.ReadLine();
+                                                Estudiante est3 = semestre.Estudiantes.Find(e => e.Id == id_e);
+                                                MostrarCalificaciones(est3);
                                                 break;
 
                                             case 4://Ver materias matriculadas y profesores
                                                 Console.WriteLine("\nIngresa tu ID: ");
-                                                id = Console.ReadLine();
-                                                Estudiante est1 = semestre.Estudiantes.Find(e => e.Id == id);
-                                                MostrarMateriasMatriculadas(est1);
+                                                id_e = Console.ReadLine();
+                                                Estudiante est4 = semestre.Estudiantes.Find(e => e.Id == id_e);
+                                                MostrarMateriasMatriculadas(est4);
                                                 break;
                                         }
                                     }
@@ -128,11 +131,20 @@ namespace SistemaUniversitario
                                                 break;
 
                                             case 1://Añadir calificaciones
-                                                //do
-                                                //{
-                                                //    Console.WriteLine("\nIngresa tu ID: ");
-                                                //    esNro = int.TryParse(Console.ReadLine(), out id);
-                                                //} while (!esNro) ;
+                                                Console.WriteLine($"\nIngresa el ID (profesor): ");
+                                                id_p = Console.ReadLine();
+                                                Profesor profe = lista_profesores.Find(p => p.Id == id_p);
+                                                Console.WriteLine("\nIngresa el ID del estudiante: ");
+                                                id_e = Console.ReadLine();
+                                                Estudiante est = semestre.Estudiantes.Find(e => e.Id == id_e);
+                                                MateriaMatriculada mat = est.Matricula.Materias_matriculadas.Find(m => m.Profesor == profe);
+                                                Console.WriteLine("\nIngresa la nota: ");
+                                                nota = double.Parse(Console.ReadLine());
+                                                Console.WriteLine("\nIngresa el porcentaje: ");
+                                                porcentaje = int.Parse(Console.ReadLine());
+                                                Console.WriteLine("\nIngresa la descripción: ");
+                                                descripcion = Console.ReadLine();
+                                                mat.AñadirCalificaciones(nota, porcentaje, descripcion);
                                                 break;
 
                                             case 2://Ver materias dictadas
@@ -172,8 +184,8 @@ namespace SistemaUniversitario
 
                                             case 2://Eliminar estudiantes
                                                 Console.WriteLine("\nIngresa el ID del estudiante que deseas eliminar: ");
-                                                id = Console.ReadLine();
-                                                semestre.EliminarEstudiantes(id);
+                                                id_e = Console.ReadLine();
+                                                semestre.EliminarEstudiantes(id_e);
                                                 break;
 
                                             case 3://Mostrar todos los estudiantes
@@ -236,9 +248,21 @@ namespace SistemaUniversitario
         {
             foreach (var item in est.Matricula.Materias_matriculadas)
             {
-                Console.WriteLine($"Materia matriculada: {item.Nombre}, Creditos: {item.Numero_creditos}, NRC: {item.Nrc}, Profesor: {item.Profesor.Nombre}");
+                Console.WriteLine($"Materia matriculada: {item.Nombre}, Creditos: {item.Numero_creditos}, NRC: {item.Nrc}, Profesor: {item.Profesor.Nombre}, Estado: {item.Estado}");
             }
             Console.WriteLine("");
+        }
+
+        public static void MostrarCalificaciones(Estudiante est)
+        {
+            foreach (var item in est.Matricula.Materias_matriculadas)
+            {
+                Console.WriteLine($"Materia: {item.Nombre}, Profesor: {item.Profesor.Nombre}");
+                foreach (var calificacion in item.Calificaciones)
+                {
+                    Console.WriteLine($"Nota: {calificacion.Nota}, Porcentaje: {calificacion.Porcentaje}, Descripción: {calificacion.Descripcion}");
+                }
+            }
         }
 
         public static void MostrarMenu()

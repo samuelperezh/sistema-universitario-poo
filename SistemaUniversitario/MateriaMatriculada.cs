@@ -34,6 +34,11 @@ namespace SistemaUniversitario
         internal List<Calificacion> Calificaciones { get => calificaciones; private set => calificaciones = value; }
         internal Profesor Profesor { get => profesor; private set => profesor = value; }
 
+        public void AñadirCalificaciones(double nota, int porcentaje, string descripcion)
+        {
+            Calificaciones.Add(new Calificacion(nota, porcentaje, descripcion));
+        }
+
         public double CalcularCalificacionFinal()
         {
             double final = 0;

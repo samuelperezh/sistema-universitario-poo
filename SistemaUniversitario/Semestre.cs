@@ -17,22 +17,22 @@ namespace SistemaUniversitario
         {
             if (tipo == "R" || tipo == "r")
             {
-                estudiantes.Add(new Regular(nombre));
-                Estudiante est = estudiantes.Find(e => e.Nombre == nombre);
+                Estudiantes.Add(new Regular(nombre));
+                Estudiante est = Estudiantes.Find(e => e.Nombre == nombre);
                 est.Matricular();
                 Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Regular");
             }
             else if (tipo == "B" || tipo == "b")
             {
-                estudiantes.Add(new Becado(nombre));
-                Estudiante est = estudiantes.Find(e => e.Nombre == nombre);
+                Estudiantes.Add(new Becado(nombre));
+                Estudiante est = Estudiantes.Find(e => e.Nombre == nombre);
                 est.Matricular();
                 Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Becado");
             }
             else if (tipo == "I" || tipo == "i")
             {
-                estudiantes.Add(new Intercambio(nombre));
-                Estudiante est = estudiantes.Find(e => e.Nombre == nombre);
+                Estudiantes.Add(new Intercambio(nombre));
+                Estudiante est = Estudiantes.Find(e => e.Nombre == nombre);
                 est.Matricular();
                 Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Intercambio");
             }
@@ -44,8 +44,8 @@ namespace SistemaUniversitario
 
         public void EliminarEstudiantes(string id)
         {
-            Estudiante est = estudiantes.Find(e => e.Id == id);
-            estudiantes.Remove(est);
+            Estudiante est = Estudiantes.Find(e => e.Id == id);
+            Estudiantes.Remove(est);
         }
     }
 }

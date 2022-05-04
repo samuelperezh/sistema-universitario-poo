@@ -3,25 +3,25 @@
     class Calificacion
     {
         private double nota;
-        private double porcentaje;
+        private int porcentaje;
         private string descripcion;
 
-        public Calificacion(double nota, double porcentaje, string descripcion)
+        public Calificacion(double nota, int porcentaje, string descripcion)
         {
             this.Nota = nota;
             this.Porcentaje = porcentaje;
             this.Descripcion = descripcion;
         }
 
-        public Calificacion(double nota, double porcentaje)
+        public Calificacion(double nota, int porcentaje)
         {
             this.Nota = nota;
             this.Porcentaje = porcentaje;
-            this.Descripcion = "";
+            this.Descripcion = "No hay una descripción";
         }
 
         public double Nota { get => nota; protected set => nota = value; }
-        public double Porcentaje { get => porcentaje; protected set => porcentaje = value; }
+        public int Porcentaje { get => porcentaje; protected set => porcentaje = value; }
         public string Descripcion { get => descripcion; protected set => descripcion = value; }
     }
 }
