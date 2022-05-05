@@ -10,18 +10,16 @@
 
         public bool Conserva_beca { get => conserva_beca; private set => conserva_beca = value; }
 
-        public bool ComprobarBeca()
+        public void ComprobarBeca()
         {
-            bool beca;
             if (Matricula.Calificacion_final >= 0 || Matricula.Calificacion_final < 4)
             {
-                beca = false;
+                Conserva_beca = false;
             }
             else
             {
-                beca = true;
+                Conserva_beca = true;
             }
-            return beca;
         }
     }
 }

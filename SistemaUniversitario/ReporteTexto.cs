@@ -23,7 +23,7 @@ namespace SistemaUniversitario
                 if (est is Regular || est is Intercambio)
                 {
                     sb.Append($"Nombre del estudiante: {est.Nombre}" +
-                        $"Tipo de estudiante: {est.GetType()}" +      
+                        $"\nTipo de estudiante: {est.GetType()}" +      
                         $"\nID: {est.Id}" +
                         $"\nCantidad de materias matriculadas: {est.Matricula.Materias_matriculadas.Count}" +
                         $"\nCantidad de créditos totales: {creditos}" +
@@ -44,6 +44,7 @@ namespace SistemaUniversitario
                     }
 
                     sb.Append($"Nombre del estudiante: {est.Nombre}" +
+                        $"\nTipo de estudiante: {est.GetType()}" +
                         $"\nID: {est.Id}" +
                         $"\nCantidad de materias matriculadas: {est.Matricula.Materias_matriculadas.Count}" +
                         $"\nCantidad de créditos totales: {creditos}" +

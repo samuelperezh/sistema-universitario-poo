@@ -105,9 +105,6 @@ namespace SistemaUniversitario
                                                 Estudiante est4 = semestre.Estudiantes.Find(e => e.Id == id_e);
                                                 MostrarResumenEstudiante(est4);
                                                 break;
-
-                                            case 5://
-                                                break;
                                         }
                                     }
                                     catch (Exception ee)
@@ -141,20 +138,18 @@ namespace SistemaUniversitario
                                                 id_e = Console.ReadLine();
                                                 Estudiante est = semestre.Estudiantes.Find(e => e.Id == id_e);
                                                 MateriaMatriculada mat = est.Matricula.Materias_matriculadas.Find(m => m.Profesor.Id == id_p);
-                                                Console.WriteLine("\nIngresa la nota: ");
                                                 esNro = false;
                                                 do
                                                 {
-                                                    Console.WriteLine("\nDigita la opción del menú que deseas acceder: ");
+                                                    Console.WriteLine("\nIngresa la nota entre 0 y 5: ");
                                                     esNro = double.TryParse(Console.ReadLine(), out nota);
-                                                } while (!esNro);
-                                                Console.WriteLine("\nIngresa el porcentaje: ");
+                                                } while (!esNro || nota < 0 || nota > 5);
                                                 esNro = false;
                                                 do
                                                 {
-                                                    Console.WriteLine("\nDigita la opción del menú que deseas acceder: ");
+                                                    Console.WriteLine("\nIngresa el porcentaje: ");
                                                     esNro = int.TryParse(Console.ReadLine(), out porcentaje);
-                                                } while (!esNro);
+                                                } while (!esNro || porcentaje > 100 || porcentaje < 100);
                                                 Console.WriteLine("\nIngresa la descripción: ");
                                                 descripcion = Console.ReadLine();
                                                 mat.AñadirCalificaciones(nota, porcentaje, descripcion);
