@@ -12,9 +12,9 @@ namespace SistemaUniversitario
 
         public Matricula(Estudiante est)
         {
-            this.Costo_matricula = CalcularCostoMatricula(est);
-            this.Calificacion_final = CalcularCalificacionFinal();
-            this.Total_creditos = CalcularCreditos();
+            CalcularCreditos();
+            CalcularCostoMatricula(est);
+            CalcularCalificacionFinal();
         }
 
         public double Costo_matricula { get => costo_matricula; private set => costo_matricula = value; }
@@ -25,29 +25,36 @@ namespace SistemaUniversitario
         public void MatricularMaterias(Materia materia, Estudiante est)
         {
             CalcularCreditos();
-            if (est is Regular || est is Becado)
+            if (Materias_matriculadas.Find(a => a.Materia == materia) == null)
             {
-                int creditos = Total_creditos + materia.Numero_creditos;
-                if (creditos <= 17)
+                if (est is Regular || est is Becado)
                 {
-                    materias_matriculadas.Add(new MateriaMatriculada(materia));
+                    int creditos = Total_creditos + materia.Numero_creditos;
+                    if (creditos <= 17)
+                    {
+                        Materias_matriculadas.Add(new MateriaMatriculada(materia));
+                    }
+                    else
+                    {
+                        Console.WriteLine("¡Error! Los estudiantes becados y regulares pueden inscribir un máximo de 17 créditos");
+                    }
                 }
-                else
+                else if (est is Intercambio)
                 {
-                    Console.WriteLine("¡Error! Los estudiantes becados y regulares pueden inscribir un máximo de 17 créditos");
+                    int creditos = Total_creditos + materia.Numero_creditos;
+                    if (creditos <= 12)
+                    {
+                        Materias_matriculadas.Add(new MateriaMatriculada(materia));
+                    }
+                    else
+                    {
+                        Console.WriteLine("¡Error! Los estudiantes de intercambio pueden inscribir un máximo de 12 créditos");
+                    }
                 }
             }
-            else if (est is Intercambio)
+            else
             {
-                int creditos = Total_creditos + materia.Numero_creditos;
-                if (creditos <= 12)
-                {
-                    materias_matriculadas.Add(new MateriaMatriculada(materia));
-                }
-                else
-                {
-                    Console.WriteLine("¡Error! Los estudiantes de intercambio pueden inscribir un máximo de 12 créditos");
-                }
+                Console.WriteLine("¡Error! La materia ya se encuentra matriculada");
             }
         }
 
@@ -56,45 +63,44 @@ namespace SistemaUniversitario
             materia.Estado = "Cancelada";
         }
 
-        public int CalcularCreditos()
+        public void CalcularCreditos()
         {
-            int creditos = 0;
+            Total_creditos = 0;
             foreach (var item in materias_matriculadas)
             {
-                creditos += item.Numero_creditos;
+                Total_creditos += item.Numero_creditos;
             }
-            return creditos;
         }
-        public double CalcularCostoMatricula(Estudiante est)
+
+        public void CalcularCostoMatricula(Estudiante est)
         {
-            double costo = 0;
-            int creditos = CalcularCreditos();
+            CalcularCreditos();
             if (est is Regular || est is Intercambio)
             {
-                costo = creditos * est.Valor_credito;
+                Costo_matricula = Total_creditos * est.Valor_credito;
             }
             else if (est is Becado)
             {
-                costo = (creditos * est.Valor_credito) - ((creditos * est.Valor_credito)*0.1);
+                Costo_matricula = (Total_creditos * est.Valor_credito) - ((Total_creditos * est.Valor_credito) * 0.1);
             }
             else
             {
                 Console.WriteLine("Error");
             }
-            return costo;
         }
 
-        public double CalcularCalificacionFinal()
+        public void CalcularCalificacionFinal()
         {
-            int creditos = CalcularCreditos();
+            CalcularCreditos();
             double ponderacion = 0;
-            double final;
             foreach (var item in materias_matriculadas)
             {
-                ponderacion += item.Numero_creditos * item.Calificacion_final;
+                if (item.Estado == "Matriculada")
+                {
+                    ponderacion += item.Numero_creditos * item.Calificacion_final;
+                }
             }
-            final = ponderacion / creditos;
-            return final;
+            Calificacion_final = ponderacion / Total_creditos;
         }
     }
 }

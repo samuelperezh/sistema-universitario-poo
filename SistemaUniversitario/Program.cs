@@ -99,17 +99,20 @@ namespace SistemaUniversitario
                                                 MostrarCalificaciones(est3);
                                                 break;
 
-                                            case 4://Ver materias matriculadas y profesores
+                                            case 4://Ver materias matriculadas, costo y total de créditos
                                                 Console.WriteLine("\nIngresa tu ID: ");
                                                 id_e = Console.ReadLine();
                                                 Estudiante est4 = semestre.Estudiantes.Find(e => e.Id == id_e);
-                                                MostrarMateriasMatriculadas(est4);
+                                                MostrarResumenEstudiante(est4);
+                                                break;
+
+                                            case 5://
                                                 break;
                                         }
                                     }
                                     catch (Exception ee)
                                     {
-                                        Console.WriteLine(ee.Message);
+                                        Console.WriteLine("Error: " + ee.Message);
                                     }
                                 } while (op_e != 0);
                                 break;
@@ -133,11 +136,11 @@ namespace SistemaUniversitario
                                             case 1://Añadir calificaciones
                                                 Console.WriteLine($"\nIngresa el ID (profesor): ");
                                                 id_p = Console.ReadLine();
-                                                Profesor profe = lista_profesores.Find(p => p.Id == id_p);
+                                                //Profesor profe = lista_profesores.Find(p => p.Id == id_p);
                                                 Console.WriteLine("\nIngresa el ID del estudiante: ");
                                                 id_e = Console.ReadLine();
                                                 Estudiante est = semestre.Estudiantes.Find(e => e.Id == id_e);
-                                                MateriaMatriculada mat = est.Matricula.Materias_matriculadas.Find(m => m.Profesor == profe);
+                                                MateriaMatriculada mat = est.Matricula.Materias_matriculadas.Find(m => m.Profesor.Id == id_p);
                                                 Console.WriteLine("\nIngresa la nota: ");
                                                 nota = double.Parse(Console.ReadLine());
                                                 Console.WriteLine("\nIngresa el porcentaje: ");
@@ -148,12 +151,19 @@ namespace SistemaUniversitario
                                                 break;
 
                                             case 2://Ver materias dictadas
+                                                Console.WriteLine($"\nIngresa el ID (profesor): ");
+                                                id_p = Console.ReadLine();
+                                                List<Materia> materia = lista_materias.FindAll(a => a.Profesor.Id == id_p);
+                                                foreach (var item in materia)
+                                                {
+                                                    Console.WriteLine($"\nMateria: {item.Nombre}, NRC: {item.Nrc}\n");
+                                                }
                                                 break;
                                         }
                                     }
                                     catch (Exception ep)
                                     {
-                                        Console.WriteLine(ep.Message);
+                                        Console.WriteLine("Error: " + ep.Message);
                                     }
                                 } while (op_e != 0);
                                 break;
@@ -206,6 +216,11 @@ namespace SistemaUniversitario
                                                 }
                                                 Console.WriteLine();
                                                 break;
+
+                                            case 4://Generar reporte del semestre
+                                                Console.WriteLine("\nGenerando reporte...\n");
+                                                semestre.ReportarSemestre();
+                                                break;
                                         }
                                     }
                                     catch (Exception ea)
@@ -218,39 +233,37 @@ namespace SistemaUniversitario
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message);
+                        Console.WriteLine("Error: " + e.Message);
                     }
                 } while (op != 0);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error: " + e.Message);
             }
         }
 
-        //public static void MostrarInfoEstudiante(Estudiante est)
-        //{
-        //    if (est is Regular)
-        //    {
-        //        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Regular\n");
-        //    }
-        //    else if (est is Becado)
-        //    {
-        //        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Becado\n");
-        //    }
-        //    else if (est is Intercambio)
-        //    {
-        //        Console.WriteLine($"Nombre: {est.Nombre}, ID: {est.Id}, Tipo de estudiante: Intercambio\n");
-        //    }
-        //}
-
-        public static void MostrarMateriasMatriculadas(Estudiante est)
+        public static void MostrarResumenEstudiante(Estudiante est)
         {
+            Console.WriteLine("");
             foreach (var item in est.Matricula.Materias_matriculadas)
             {
-                Console.WriteLine($"Materia matriculada: {item.Nombre}, Creditos: {item.Numero_creditos}, NRC: {item.Nrc}, Profesor: {item.Profesor.Nombre}, Estado: {item.Estado}");
+                Console.WriteLine($"Materia matriculada: {item.Nombre}, Creditos: {item.Numero_creditos}, NRC: {item.Nrc}, " +
+                    $"\nProfesor: {item.Profesor.Nombre}, Estado: {item.Estado}");
             }
-            Console.WriteLine("");
+            est.Matricula.CalcularCreditos();
+            est.Matricula.CalcularCostoMatricula(est);
+            foreach (var item in est.Matricula.Materias_matriculadas)
+            {
+                item.CalcularCalificacionFinal();
+            }
+            est.Matricula.CalcularCalificacionFinal();
+            est.VerificarAprobacion();
+            Console.WriteLine($"\nCalificación final acumulada: {est.Matricula.Calificacion_final}" +
+                $"\nEstado de aprobación actual: {est.Aprobacion}\n" +
+                $"\nTotal de créditos: {est.Matricula.Total_creditos}" +
+                $"\nValor crédito {est.Valor_credito}" +
+                $"\nTotal matrícula: {est.Matricula.Costo_matricula:C}\n");
         }
 
         public static void MostrarCalificaciones(Estudiante est)
@@ -281,7 +294,7 @@ namespace SistemaUniversitario
                 "1. Inscribir materias\n" +
                 "2. Cancelar materias\n" +
                 "3. Ver calificaciones\n" +
-                "4. Ver materias matriculadas y profesores\n" +
+                "4. Ver materias matriculadas, costo y total de créditos\n" +
                 "0. Regresar al menú anterior");
         }
 
@@ -299,6 +312,7 @@ namespace SistemaUniversitario
                 "1. Crear estudiantes\n" +
                 "2. Eliminar estudiantes\n" +
                 "3. Mostrar todos los estudiantes\n" +
+                "4. Generar reporte del semestre\n" +
                 "0. Regresar al menú anterior");
         }
     }

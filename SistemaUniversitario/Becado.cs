@@ -6,22 +6,22 @@
         public Becado(string nombre) : base(nombre)
         {
             this.Valor_credito = 574000;
-            this.Conserva_beca = true;
         }
 
         public bool Conserva_beca { get => conserva_beca; private set => conserva_beca = value; }
 
-        public bool ComprobarBeca(Matricula matr)
+        public bool ComprobarBeca()
         {
-            if (matr.Calificacion_final < 4 && matr.Calificacion_final >= 0)
+            bool beca;
+            if (Matricula.Calificacion_final >= 0 || Matricula.Calificacion_final < 4)
             {
-                Conserva_beca = false;
+                beca = false;
             }
             else
             {
-                Conserva_beca = true;
+                beca = true;
             }
-            return Conserva_beca;
+            return beca;
         }
     }
 }

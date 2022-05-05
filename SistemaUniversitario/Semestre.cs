@@ -47,5 +47,20 @@ namespace SistemaUniversitario
             Estudiante est = Estudiantes.Find(e => e.Id == id);
             Estudiantes.Remove(est);
         }
+
+        public void ReportarSemestre()
+        {
+            foreach (var item in Estudiantes)
+            {
+                item.Matricula.CalcularCreditos();
+                item.Matricula.CalcularCalificacionFinal();
+                item.VerificarAprobacion();
+                if (item is Becado)
+                {
+                    (item as Becado).ComprobarBeca();
+                }
+                reporte.Reportar(item);
+            }
+        }
     }
 }
