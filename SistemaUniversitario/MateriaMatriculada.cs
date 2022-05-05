@@ -20,12 +20,13 @@ namespace SistemaUniversitario
             this.Nombre = materia.Nombre;
             this.Nrc = materia.Nrc;
             this.Numero_creditos = materia.Numero_creditos;
-            this.Calificacion_final = CalcularCalificacionFinal();
+            //CalcularCalificacionFinal();
             this.Estado = "Matriculada";
             this.Profesor = materia.Profesor;
+            this.Materia = materia;
         }
 
-        public double Calificacion_final { get => calificacion_final; private set => calificacion_final = value; }
+        public double Calificacion_final { get => calificacion_final; set => calificacion_final = value; }
         public string Estado { get => estado; set => estado = value; }
         public string Nombre { get => nombre; private set => nombre = value; }
         public string Nrc { get => nrc; private set => nrc = value; }
@@ -39,18 +40,12 @@ namespace SistemaUniversitario
             Calificaciones.Add(new Calificacion(nota, porcentaje, descripcion));
         }
 
-        public double CalcularCalificacionFinal()
+        public void CalcularCalificacionFinal()
         {
-            double final = 0;
             foreach (var item in Calificaciones)
             {
-                final += (item.Nota * (item.Porcentaje / 100));
+                Calificacion_final += (item.Nota * (item.Porcentaje / 100));
             }
-            if (final > 5)
-            {
-                final = 0;
-            }
-            return final;
         }
     }
 }

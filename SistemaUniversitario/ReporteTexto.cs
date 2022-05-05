@@ -11,7 +11,7 @@ namespace SistemaUniversitario
         {
             try
             {
-                string strRuta = "..\\..\\..\\ReporteSemestre.txt";
+                string strRuta = "C:\\Users\\samue\\Desktop\\ReporteSemestre.txt";
                 StringBuilder sb = new StringBuilder();
 
                 int creditos = 0;
@@ -22,15 +22,17 @@ namespace SistemaUniversitario
 
                 if (est is Regular || est is Intercambio)
                 {
-                    sb.Append($"Nombre del estudiante: {est.Nombre}" +      
+                    sb.Append($"Nombre del estudiante: {est.Nombre}" +
+                        $"Tipo de estudiante: {est.GetType()}" +      
                         $"\nID: {est.Id}" +
                         $"\nCantidad de materias matriculadas: {est.Matricula.Materias_matriculadas.Count}" +
                         $"\nCantidad de créditos totales: {creditos}" +
                         $"\nCalificacion final (promedio crédito ponderado): {est.Matricula.Calificacion_final}" +
-                        $"\nEstado de aprobación: {est.Aprobacion}\n");
+                        $"\nEstado de aprobación: {est.Aprobacion}\n \n");
                 }
                 else if (est is Becado)
                 {
+                    (est as Becado).ComprobarBeca();
                     string beca;
                     if ((est as Becado).Conserva_beca)
                     {
@@ -49,12 +51,11 @@ namespace SistemaUniversitario
                         $"\nEstado de aprobación: {est.Aprobacion}" +
                         $"\n¿Continúa con la beca? {beca}\n");
                 }
-
                 File.AppendAllText(strRuta, sb.ToString());
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new Exception("¡Error al reportar!");
+                throw new Exception("¡Error al reportar!" + e.Message);
             };
         }
     }

@@ -30,18 +30,16 @@ namespace SistemaUniversitario
             Matricula = new Matricula(this);
         }
 
-        public virtual string VerificarAprobacion()
+        public virtual void VerificarAprobacion()
         {
-            string aprobacion;
             if (Matricula.Calificacion_final >= 3 && Matricula.Calificacion_final <= 5)
             {
-                aprobacion = "Aprobado";
+                Aprobacion = "Aprobado";
             }
             else
             {
-                aprobacion = "Reprobado";
+                Aprobacion = "Reprobado";
             }
-            return aprobacion;
         }
         
         public string GenerarID()
