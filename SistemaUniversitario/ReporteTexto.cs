@@ -51,7 +51,7 @@ namespace SistemaUniversitario
                         $"\nEstado de aprobación: {est.Aprobacion}" +
                         $"\n¿Continúa con la beca? {beca}\n");
                 }
-                File.AppendAllText(strRuta, sb.ToString());
+                File.WriteAllText(strRuta, sb.ToString());
             }
             catch (Exception e)
             {

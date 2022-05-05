@@ -142,9 +142,19 @@ namespace SistemaUniversitario
                                                 Estudiante est = semestre.Estudiantes.Find(e => e.Id == id_e);
                                                 MateriaMatriculada mat = est.Matricula.Materias_matriculadas.Find(m => m.Profesor.Id == id_p);
                                                 Console.WriteLine("\nIngresa la nota: ");
-                                                nota = double.Parse(Console.ReadLine());
+                                                esNro = false;
+                                                do
+                                                {
+                                                    Console.WriteLine("\nDigita la opción del menú que deseas acceder: ");
+                                                    esNro = double.TryParse(Console.ReadLine(), out nota);
+                                                } while (!esNro);
                                                 Console.WriteLine("\nIngresa el porcentaje: ");
-                                                porcentaje = int.Parse(Console.ReadLine());
+                                                esNro = false;
+                                                do
+                                                {
+                                                    Console.WriteLine("\nDigita la opción del menú que deseas acceder: ");
+                                                    esNro = int.TryParse(Console.ReadLine(), out porcentaje);
+                                                } while (!esNro);
                                                 Console.WriteLine("\nIngresa la descripción: ");
                                                 descripcion = Console.ReadLine();
                                                 mat.AñadirCalificaciones(nota, porcentaje, descripcion);
