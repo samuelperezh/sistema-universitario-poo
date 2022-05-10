@@ -13,7 +13,7 @@ namespace SistemaUniversitario
             string nrc;
             string id_e;
             string id_p;
-            double nota;
+            float nota;
             int porcentaje;
             string descripcion;
             Semestre semestre = new Semestre();
@@ -142,14 +142,14 @@ namespace SistemaUniversitario
                                                 do
                                                 {
                                                     Console.WriteLine("\nIngresa la nota entre 0 y 5: ");
-                                                    esNro = double.TryParse(Console.ReadLine(), out nota);
+                                                    esNro = float.TryParse(Console.ReadLine(), out nota);
                                                 } while (!esNro || nota < 0 || nota > 5);
                                                 esNro = false;
                                                 do
                                                 {
                                                     Console.WriteLine("\nIngresa el porcentaje: ");
                                                     esNro = int.TryParse(Console.ReadLine(), out porcentaje);
-                                                } while (!esNro || porcentaje > 100 || porcentaje < 100);
+                                                } while (!esNro || porcentaje > 100 || porcentaje < 0);
                                                 Console.WriteLine("\nIngresa la descripción: ");
                                                 descripcion = Console.ReadLine();
                                                 mat.AñadirCalificaciones(nota, porcentaje, descripcion);

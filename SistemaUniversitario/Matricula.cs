@@ -81,7 +81,7 @@ namespace SistemaUniversitario
             }
             else if (est is Becado)
             {
-                Costo_matricula = (Total_creditos * est.Valor_credito) - ((Total_creditos * est.Valor_credito) * 0.1);
+                Costo_matricula = (Total_creditos * est.Valor_credito) - ((Total_creditos * est.Valor_credito) * 0.8);
             }
             else
             {

@@ -11,7 +11,7 @@ namespace SistemaUniversitario
         {
             try
             {
-                string strRuta = "C:\\Users\\samue\\Desktop\\ReporteSemestre.txt";
+                string strRuta = "..\\..\\..\\\\ReporteSemestre.txt";
                 StringBuilder sb = new StringBuilder();
 
                 int creditos = 0;
@@ -52,7 +52,7 @@ namespace SistemaUniversitario
                         $"\nEstado de aprobación: {est.Aprobacion}" +
                         $"\n¿Continúa con la beca? {beca}\n");
                 }
-                File.WriteAllText(strRuta, sb.ToString());
+                File.AppendAllText(strRuta, sb.ToString());
             }
             catch (Exception e)
             {

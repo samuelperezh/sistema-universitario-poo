@@ -20,7 +20,6 @@ namespace SistemaUniversitario
             this.Nombre = materia.Nombre;
             this.Nrc = materia.Nrc;
             this.Numero_creditos = materia.Numero_creditos;
-            //CalcularCalificacionFinal();
             this.Estado = "Matriculada";
             this.Profesor = materia.Profesor;
             this.Materia = materia;
@@ -35,7 +34,7 @@ namespace SistemaUniversitario
         internal List<Calificacion> Calificaciones { get => calificaciones; private set => calificaciones = value; }
         internal Profesor Profesor { get => profesor; private set => profesor = value; }
 
-        public void AñadirCalificaciones(double nota, int porcentaje, string descripcion)
+        public void AñadirCalificaciones(float nota, int porcentaje, string descripcion)
         {
             Calificaciones.Add(new Calificacion(nota, porcentaje, descripcion));
         }
